@@ -6,12 +6,13 @@
     <meta name="format-detection" content="telephone=no">
     <title>sw test</title>
     <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="favicon" href="favicon.ico">
 </head>
 <body><h1>this is the test page</h1></body>
 <script>
     if('serviceWorker' in navigator) {
         navigator.serviceWorker
-            .register('/js/sw.js')
+            .register('./js/sw.js')
             .then(function() { console.log("Service Worker Registered"); });
     }
 </script>
