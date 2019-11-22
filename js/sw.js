@@ -1,6 +1,6 @@
 var deferredPrompt;
 
-window.addEventListener('beforeinstallprompt', function(e) {
-    console.log('you can install the app');
+self.addEventListener('beforeinstallprompt', function(e) {
     deferredPrompt = e;
+    console.log(e);
 });
