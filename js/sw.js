@@ -2,5 +2,9 @@ var deferredPrompt;
 
 self.addEventListener('beforeinstallprompt', function(e) {
     deferredPrompt = e;
-    console.log(e);
+    alert('not installed');
+});
+
+self.addEventListener('appinstalled', function(e) { //if the app is on home screen
+  alert('yc installed');
 });
