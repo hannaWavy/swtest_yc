@@ -15,22 +15,23 @@
 </head>
 <body><h1>this is the test page</h1></body>
 <script>
-    if('serviceWorker' in navigator) {
-        navigator.serviceWorker
-            .register('./js/sw.js')
-            .then(function() { console.log("Service Worker Registered"); });
-    }
-</script>
-<script>
     var deferredPrompt;
 
-    window.addEventListener('beforeinstallprompt', function(e) {
-        deferredPrompt = e;
-        document.body.textContent = "not installed";
-    });
+    window.addEventListener('load', function() {
+        if('serviceWorker' in navigator) {
+            navigator.serviceWorker
+                .register('./js/sw.js')
+                .then(function() { console.log("Service Worker Registered"); });
+        }
 
-    window.addEventListener('appinstalled', function(e) { //if the app is on home screen
-        document.body.textContent = "installed";
+        window.addEventListener('beforeinstallprompt', function(e) {
+            deferredPrompt = e;
+            document.body.textContent = "not installed";
+        });
+
+        window.addEventListener('appinstalled', function(e) { //if the app is on home screen
+            document.body.textContent = "installed";
+        });
     });
 </script>
 </html>
