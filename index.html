@@ -7,6 +7,11 @@
     <title>sw test</title>
     <link rel="manifest" href="./manifest.webmanifest">
     <link rel="favicon" href="favicon.ico">
+    <link rel="icon" sizes="72x72" href="./images/manifest/icon-72x72.png">
+    <link rel="icon" sizes="96x96" href="./images/manifest/icon-96x96.png">
+    <link rel="icon" sizes="128x128" href="./images/manifest/icon-128x128.png">
+    <link rel="icon" sizes="144x144" href="./images/manifest/icon-144x144.png">
+    <link rel="icon" sizes="152x152" href="./images/manifest/icon-152x152.png">
 </head>
 <body><h1>this is the test page</h1></body>
 <script>
@@ -21,11 +26,11 @@
 
     window.addEventListener('beforeinstallprompt', function(e) {
         deferredPrompt = e;
-        alert('not installed');
+        document.body.textContent = "not installed";
     });
 
     window.addEventListener('appinstalled', function(e) { //if the app is on home screen
-      alert('yc installed');
+        document.body.textContent = "installed";
     });
 </script>
 </html>
