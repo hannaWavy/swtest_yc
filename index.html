@@ -26,13 +26,13 @@
 </body>
 <script>
     var deferredPrompt = false;
+    var messageBlock = document.getElementById('messageBlock');
+    var btnAdd = document.getElementById('btnAdd');
 
     if('serviceWorker' in navigator) {
         navigator.serviceWorker
             .register('./js/sw.js')
-            .then(function() { messageBlock.textContent = "Service Worker Registered"; }).catch(function (error) {
-              messageBlock.innerHtml = "error when registering service worker " + error + " args: " + arguments;
-            }); //all is good here
+            .then(function() { messageBlock.textContent = "Service Worker Registered"; }); //all is good here
     }
 
     window.on('load', function(e) {
@@ -65,5 +65,18 @@
             messageBlock.textContent = "no event beforeinstallprompt";
         }
     });
+
+    //for ios
+    // Detects if device is on iOS 
+    var isIos = function() {
+        return /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
+    }
+        
+    var isInStandaloneMode = function() { return ('standalone' in window.navigator) && (window.navigator.standalone); };
+
+    // Checks if should display install popup notification:
+    if (isIos() && !isInStandaloneMode()) {
+        messageBlock.textContent = "show ios popup";
+    }
 </script>
 </html>
