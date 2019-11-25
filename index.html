@@ -32,7 +32,9 @@
     if('serviceWorker' in navigator) {
         navigator.serviceWorker
             .register('./js/sw.js')
-            .then(function() { console.log("Service Worker Registered"); });   
+            .then(function() { messageBlock.textContent = "Service Worker Registered"; }).catch(function (error) {
+              messageBlock.innerHtml = "error when registering service worker " + error + " args: " + arguments;
+            });;   
     }
 
     window.addEventListener('beforeinstallprompt', function(e) {
