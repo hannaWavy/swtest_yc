@@ -21,7 +21,7 @@
 </head>
 <body>
     <h1>this is the test page</h1>
-    <button id="btnAdd">Add</button>
+    <button id="btnAdd" style="display: none;">Add</button>
     <div id="messageBlock"></div>
 </body>
 <script>
@@ -47,6 +47,8 @@
           e.userChoice.then(function(choiceResult) { 
             console.log(choiceResult.outcome); // either "accepted" or "dismissed"
           }, handleError); 
+
+          btnAdd.style.display = "block";
         });
 
         window.addEventListener('appinstalled', function(e) { //works
