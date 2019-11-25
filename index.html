@@ -41,41 +41,37 @@
     //         messageBlock.textContent = "not installed";
     //     });
 
-    window.addEventListener("beforeinstallprompt", function(e) { 
-      // log the platforms provided as options in an install prompt 
+   window.addEventListener('beforeinstallprompt', function(e) {
+      // Prevent Chrome 67 and earlier from automatically showing the prompt
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
       deferredPrompt = e;
-      e.prompt();
-        // messageBlock.innerHTML = e.platforms.join();
-      e.userChoice.then(function(choiceResult) { 
-        console.log(choiceResult.outcome); // either "accepted" or "dismissed"
-      }, handleError); 
-
-      btnAdd.style.display = "block";
+      btnAdd.style.display = 'block';
     });
 
     window.addEventListener('appinstalled', function(e) { //works
         messageBlock.textContent = "installed";
     });
 
-    // btnAdd.addEventListener('click', function(e) {
-    //     if (deferredPrompt) {
-    //         // hide our user interface that shows our A2HS button
-    //         btnAdd.style.display = 'none';
-    //         // Show the prompt
-    //         deferredPrompt.prompt();
-    //         // Wait for the user to respond to the prompt
-    //         deferredPrompt.userChoice.then((choiceResult) => {
-    //             if (choiceResult.outcome === 'accepted') {
-    //                 messageBlock.textContent = "User accepted the A2HS prompt";
-    //             } else {
-    //                 messageBlock.textContent = "User dismissed the A2HS prompt";
-    //             }
-    //             deferredPrompt = null;
-    //         });
-    //     } else {
-    //         messageBlock.textContent = "no event beforeinstallprompt";
-    //     }
-    // });
+    btnAdd.addEventListener('click', function(e) {
+        if (deferredPrompt) {
+            // hide our user interface that shows our A2HS button
+            btnAdd.style.display = 'none';
+            // Show the prompt
+            deferredPrompt.prompt();
+            // Wait for the user to respond to the prompt
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    messageBlock.textContent = "User accepted the A2HS prompt";
+                } else {
+                    messageBlock.textContent = "User dismissed the A2HS prompt";
+                }
+                deferredPrompt = null;
+            });
+        } else {
+            messageBlock.textContent = "no event beforeinstallprompt";
+        }
+    });
 
     //for ios
     // Detects if device is on iOS 
