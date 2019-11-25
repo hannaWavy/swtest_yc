@@ -72,7 +72,12 @@
         return /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
     }
         
-    var isInStandaloneMode = function() { return ('standalone' in window.navigator) && (window.navigator.standalone); };
+    var isInStandaloneMode = function() { 
+        return ('standalone' in window.navigator) && (window.navigator.standalone); 
+    };
+
+    console.log(isIos());
+    console.log(isInStandaloneMode());
 
     // Checks if should display install popup notification:
     if (isIos() && !isInStandaloneMode()) {
