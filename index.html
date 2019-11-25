@@ -34,27 +34,28 @@
             .register('./js/sw.js')
             .then(function() { console.log("Service Worker Registered"); }); //all is good here
     }
-
-    // window.addEventListener('onload', function(e) {
+</script>
+<script>
     //     window.addEventListener('beforeinstallprompt', function(e) { //not good here
     //         deferredPrompt = e;
     //         messageBlock.textContent = "not installed";
     //     });
 
-        window.addEventListener("beforeinstallprompt", function(e) { 
-          // log the platforms provided as options in an install prompt 
-            messageBlock.innerHTML = e.platforms.join();
-          e.userChoice.then(function(choiceResult) { 
-            console.log(choiceResult.outcome); // either "accepted" or "dismissed"
-          }, handleError); 
+    window.addEventListener("beforeinstallprompt", function(e) { 
+      // log the platforms provided as options in an install prompt 
+      deferredPrompt = e;
+      e.prompt();
+        // messageBlock.innerHTML = e.platforms.join();
+      e.userChoice.then(function(choiceResult) { 
+        console.log(choiceResult.outcome); // either "accepted" or "dismissed"
+      }, handleError); 
 
-          btnAdd.style.display = "block";
-        });
+      btnAdd.style.display = "block";
+    });
 
-        window.addEventListener('appinstalled', function(e) { //works
-            messageBlock.textContent = "installed";
-        });
-    // });
+    window.addEventListener('appinstalled', function(e) { //works
+        messageBlock.textContent = "installed";
+    });
 
     // btnAdd.addEventListener('click', function(e) {
     //     if (deferredPrompt) {
