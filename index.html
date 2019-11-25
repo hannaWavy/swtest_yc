@@ -32,16 +32,18 @@
             .register('./js/sw.js')
             .then(function() { messageBlock.textContent = "Service Worker Registered"; }).catch(function (error) {
               messageBlock.innerHtml = "error when registering service worker " + error + " args: " + arguments;
-            });;   
+            }); //all is good here
     }
 
-    window.addEventListener('beforeinstallprompt', function(e) {
-        deferredPrompt = e;
-        messageBlock.textContent = "not installed";
-    });
+    window.on('load', function(e) {
+        window.addEventListener('beforeinstallprompt', function(e) { //not good here
+            deferredPrompt = e;
+            messageBlock.textContent = "not installed";
+        });
 
-    window.addEventListener('appinstalled', function(e) { //if the app is on home screen
-        messageBlock.textContent = "installed";
+        window.addEventListener('appinstalled', function(e) { //works
+            messageBlock.textContent = "installed";
+        });
     });
 
     btnAdd.addEventListener('click', function(e) {
