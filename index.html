@@ -43,9 +43,7 @@
 
         window.addEventListener("beforeinstallprompt", function(e) { 
           // log the platforms provided as options in an install prompt 
-          if (e.platforms.length)
-            messageBlock.innerHTML = e.platforms.join(); // e.g., ["web", "android", "windows"] 
-            else messageBlock.textContent = 'no platforms';
+            messageBlock.innerHTML = e.platforms.join();
           e.userChoice.then(function(choiceResult) { 
             console.log(choiceResult.outcome); // either "accepted" or "dismissed"
           }, handleError); 
