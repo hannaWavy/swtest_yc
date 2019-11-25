@@ -27,8 +27,6 @@
 <script>
     var deferredPrompt = false;
 
-    messageBlock.textContent = "selector";
-
     if('serviceWorker' in navigator) {
         navigator.serviceWorker
             .register('./js/sw.js')
