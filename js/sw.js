@@ -1,4 +1,3 @@
-'use strict';
 var CACHE_NAME = 'yc-v1';
 var urlsToCache = [
   '/'
