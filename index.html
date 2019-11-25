@@ -35,7 +35,7 @@
             .then(function() { console.log("Service Worker Registered"); }); //all is good here
     }
 
-    window.addEventListener('onload', function(e) {
+    // window.addEventListener('onload', function(e) {
     //     window.addEventListener('beforeinstallprompt', function(e) { //not good here
     //         deferredPrompt = e;
     //         messageBlock.textContent = "not installed";
@@ -52,7 +52,7 @@
         window.addEventListener('appinstalled', function(e) { //works
             messageBlock.textContent = "installed";
         });
-    });
+    // });
 
     // btnAdd.addEventListener('click', function(e) {
     //     if (deferredPrompt) {
