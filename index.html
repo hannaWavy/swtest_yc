@@ -32,7 +32,7 @@
     if('serviceWorker' in navigator) {
         navigator.serviceWorker
             .register('./js/sw.js')
-            .then(function() { messageBlock.textContent = "Service Worker Registered"; }); //all is good here
+            .then(function() { console.log("Service Worker Registered"); }); //all is good here
     }
 
     window.addEventListener('onload', function(e) {
