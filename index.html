@@ -25,7 +25,7 @@
     <div id="messageBlock"></div>
 </body>
 <script>
-    var deferredPrompt;
+    var deferredPrompt = false;
 
     messageBlock.textContent = "selector";
 
@@ -45,20 +45,23 @@
     });
 
     btnAdd.addEventListener('click', function(e) {
-      // hide our user interface that shows our A2HS button
-      btnAdd.style.display = 'none';
-      // Show the prompt
-      deferredPrompt.prompt();
-      // Wait for the user to respond to the prompt
-      deferredPrompt.userChoice
-        .then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
-            messageBlock.textContent = "User accepted the A2HS prompt";
-          } else {
-            messageBlock.textContent = "User dismissed the A2HS prompt";
-          }
-          deferredPrompt = null;
-        });
+        if (deferredPrompt) {
+            // hide our user interface that shows our A2HS button
+            btnAdd.style.display = 'none';
+            // Show the prompt
+            deferredPrompt.prompt();
+            // Wait for the user to respond to the prompt
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    messageBlock.textContent = "User accepted the A2HS prompt";
+                } else {
+                    messageBlock.textContent = "User dismissed the A2HS prompt";
+                }
+                deferredPrompt = null;
+            });
+        } else {
+            messageBlock.textContent = "no event beforeinstallprompt";
+        }
     });
 </script>
 </html>
