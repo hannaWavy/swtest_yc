@@ -67,7 +67,7 @@
     if('serviceWorker' in navigator) {
         navigator.serviceWorker
             .register('/swtest_yc/js/sw.js')
-            .then(function() { console.log('ServiceWorker registration successful with scope: ', registration.scope); }); //all is good here
+            .then(function(registration) { console.log('ServiceWorker registration successful with scope: ', registration.scope); }); //all is good here
     }
 
     //     window.addEventListener('beforeinstallprompt', function(e) { //not good here
