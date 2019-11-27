@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
     <title>sw test</title>
-    <link rel="manifest" href="./manifest.json">
+    <link rel="manifest" href="/swtest_yc/manifest.json">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" sizes="72x72" href="./images/manifest/icon-72x72.png">
     <link rel="icon" sizes="96x96" href="./images/manifest/icon-96x96.png">
@@ -66,7 +66,7 @@
 
     if('serviceWorker' in navigator) {
         navigator.serviceWorker
-            .register('./js/sw.js')
+            .register('/swtest_yc/js/sw.js')
             .then(function() { console.log("Service Worker Registered"); }); //all is good here
     }
 </script>
@@ -110,17 +110,17 @@
 
     //for ios
     // Detects if device is on iOS 
-    var isIos = function() {
-        return /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
-    }
+    // var isIos = function() {
+    //     return /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
+    // }
         
-    var isInStandaloneMode = function() { 
-        return ('standalone' in window.navigator) && (window.navigator.standalone); 
-    };
+    // var isInStandaloneMode = function() { 
+    //     return ('standalone' in window.navigator) && (window.navigator.standalone); 
+    // };
 
-    // Checks if should display install popup notification:
-    if (isIos() && !isInStandaloneMode()) {
-        console.log("show ios popup");
-    }
+    // // Checks if should display install popup notification:
+    // if (isIos() && !isInStandaloneMode()) {
+    //     console.log("show ios popup");
+    // }
 </script>
 </html>

@@ -1,6 +1,6 @@
-var CACHE_NAME = 'yc-v1';
+var CACHE_NAME = 'yc-cache-v1';
 var urlsToCache = [
-  '/'
+  '/swtest_yc/index.html'
 ];
 
 self.addEventListener('install', function(event) {

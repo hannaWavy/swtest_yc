@@ -5,7 +5,7 @@
   "theme_color": "#36bc64",
   "background_color": "#ffffff",
   "orientation": "portrait-primary",
-  "start_url": "./",
+  "start_url": "/swtest_yc/",
   "prefer_related_applications": false,
   "icons": [
     {
