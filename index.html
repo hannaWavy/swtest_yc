@@ -67,10 +67,9 @@
     if('serviceWorker' in navigator) {
         navigator.serviceWorker
             .register('/swtest_yc/js/sw.js')
-            .then(function() { console.log("Service Worker Registered"); }); //all is good here
+            .then(function() { console.log('ServiceWorker registration successful with scope: ', registration.scope); }); //all is good here
     }
-</script>
-<script>
+
     //     window.addEventListener('beforeinstallprompt', function(e) { //not good here
     //         deferredPrompt = e;
     //         messageBlock.textContent = "not installed";
