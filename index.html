@@ -64,27 +64,27 @@
     var messageBlock = document.getElementById('messageBlock');
     var btnAdd = document.getElementById('btnAdd');
 
+
     if('serviceWorker' in navigator) {
         navigator.serviceWorker
-            .register('/swtest_yc/sw.js')
-            .then(function(registration) { console.log('ServiceWorker registration successful with scope: ', registration.scope); }); //all is good here
+            .register('/sw.js')
+            // .then(function(registration) {});
+            .then(function(registration) { console.log('ServiceWorker registration successful with scope: ', registration.scope); });
     }
 
-    //     window.addEventListener('beforeinstallprompt', function(e) { //not good here
-    //         deferredPrompt = e;
-    //         messageBlock.textContent = "not installed";
-    //     });
-
-   window.addEventListener('beforeinstallprompt', function(e) {
-      // Prevent Chrome 67 and earlier from automatically showing the prompt
-      // e.preventDefault();
-      // Stash the event so it can be triggered later.
-      deferredPrompt = e;
-      btnAdd.style.display = 'block';
+    window.addEventListener('appinstalled', function() {
+        messageBlock.textContent = "install_chrome_pwa";
     });
 
-    window.addEventListener('appinstalled', function(e) { //works
-        messageBlock.textContent = "installed";
+    window.addEventListener('beforeinstallprompt', function(e) {
+        e.userChoice
+            .then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    messageBlock.textContent = "add_chrome_banner";
+                } else {
+                    messageBlock.textContent = "close_chrome_banner";
+                }
+        });
     });
 
     // btnAdd.addEventListener('click', function(e) {
