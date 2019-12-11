@@ -82,11 +82,11 @@
         deferredPrompt.prompt();
         deferredPrompt.userChoice
             .then(function(choiceResult) {
-                messageBlock.textContent(choiceResult.outcome);
+                console.log(choiceResult.outcome);
                 if (choiceResult.outcome === 'accepted') {
-                    messageBlock.textContent = "add_chrome_banner";
+                    console.log("add_chrome_banner");
                 } else {
-                    messageBlock.textContent = "close_chrome_banner";
+                    console.log("close_chrome_banner");
                 }
         });
     });
