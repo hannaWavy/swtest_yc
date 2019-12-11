@@ -77,45 +77,44 @@
     });
 
     window.addEventListener('beforeinstallprompt', function(e) {
-        // e.preventDefault();
+        e.preventDefault();
 
         deferredPrompt = e;
+        btnAdd.style.display = "block";
 
 
-        // deferredPrompt = e;
-        // deferredPrompt.prompt();
-            console.log('opa');
-        deferredPrompt.userChoice.then(function(choiceResult) {
-            console.log('opa2');
-            console.log(choiceResult.outcome);
-            if (choiceResult.outcome === 'accepted') {
-                console.log("add_chrome_banner");
-            } else {
-                console.log("close_chrome_banner");
-            }
-        });
+        // // deferredPrompt = e;
+        // // deferredPrompt.prompt();
+        //     console.log('opa');
+        // deferredPrompt.userChoice.then(function(choiceResult) {
+        //     console.log('opa2');
+        //     console.log(choiceResult.outcome);
+        //     if (choiceResult.outcome === 'accepted') {
+        //         console.log("add_chrome_banner");
+        //     } else {
+        //         console.log("close_chrome_banner");
+        //     }
+        // });
 
         return false;
     });
 
-    // btnAdd.addEventListener('click', function(e) {
-    //     if (deferredPrompt) {
-    //         // hide our user interface that shows our A2HS button
-    //         btnAdd.style.display = 'none';
-    //         // Show the prompt
-    //         deferredPrompt.prompt();
-    //         // Wait for the user to respond to the prompt
-    //         deferredPrompt.userChoice.then((choiceResult) => {
-    //             if (choiceResult.outcome === 'accepted') {
-    //                 messageBlock.textContent = "User accepted the A2HS prompt";
-    //             } else {
-    //                 messageBlock.textContent = "User dismissed the A2HS prompt";
-    //             }
-    //             deferredPrompt = null;
-    //         });
-    //     } else {
-    //         messageBlock.textContent = "no event beforeinstallprompt";
-    //     }
-    // });
+    btnAdd.addEventListener('click', function(e) {
+        if (deferredPrompt) {
+            // hide our user interface that shows our A2HS button
+            btnAdd.style.display = 'none';
+            // Show the prompt
+            deferredPrompt.prompt();
+            // Wait for the user to respond to the prompt
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log("add_chrome_banner");   
+                } else {
+                    console.log("close_chrome_banner");
+                }
+                deferredPrompt = null;
+            });
+        }
+    });
 </script>
 </html>
