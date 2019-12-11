@@ -60,7 +60,7 @@
     <div class="image-block"></div>
 </body>
 <script>
-    var deferredPrompt = false;
+    // var deferredPrompt = false;
     var messageBlock = document.getElementById('messageBlock');
     var btnAdd = document.getElementById('btnAdd');
 
@@ -78,15 +78,17 @@
 
     window.addEventListener('beforeinstallprompt', function(e) {
         // e.preventDefault();
-        deferredPrompt = e;
+
+
+        // deferredPrompt = e;
         // deferredPrompt.prompt();
-        deferredPrompt.userChoice
-            .then(function(choiceResult) {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log("add_chrome_banner");
-                } else {
-                    console.log("close_chrome_banner");
-                }
+        e.userChoice.then(function(choiceResult) {
+            console.log(choiceResult.outcome);
+            if (choiceResult.outcome === 'accepted') {
+                console.log("add_chrome_banner");
+            } else {
+                console.log("close_chrome_banner");
+            }
         });
     });
 
