@@ -84,7 +84,9 @@
 
         // deferredPrompt = e;
         // deferredPrompt.prompt();
+            console.log('opa');
         deferredPrompt.userChoice.then(function(choiceResult) {
+            console.log('opa2');
             console.log(choiceResult.outcome);
             if (choiceResult.outcome === 'accepted') {
                 console.log("add_chrome_banner");
