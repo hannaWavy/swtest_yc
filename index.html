@@ -60,7 +60,7 @@
     <div class="image-block"></div>
 </body>
 <script>
-    // var deferredPrompt = false;
+    var deferredPrompt = false;
     var messageBlock = document.getElementById('messageBlock');
     var btnAdd = document.getElementById('btnAdd');
 
@@ -79,10 +79,12 @@
     window.addEventListener('beforeinstallprompt', function(e) {
         // e.preventDefault();
 
+        deferredPrompt = e || e.originalEvent;
+
 
         // deferredPrompt = e;
         // deferredPrompt.prompt();
-        e.userChoice.then(function(choiceResult) {
+        deferredPrompt.userChoice.then(function(choiceResult) {
             console.log(choiceResult.outcome);
             if (choiceResult.outcome === 'accepted') {
                 console.log("add_chrome_banner");
