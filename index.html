@@ -82,20 +82,6 @@
         deferredPrompt = e;
         btnAdd.style.display = "block";
 
-
-        // // deferredPrompt = e;
-        // // deferredPrompt.prompt();
-        //     console.log('opa');
-        // deferredPrompt.userChoice.then(function(choiceResult) {
-        //     console.log('opa2');
-        //     console.log(choiceResult.outcome);
-        //     if (choiceResult.outcome === 'accepted') {
-        //         console.log("add_chrome_banner");
-        //     } else {
-        //         console.log("close_chrome_banner");
-        //     }
-        // });
-
         return false;
     });
 
@@ -105,6 +91,7 @@
             btnAdd.style.display = 'none';
             // Show the prompt
             deferredPrompt.prompt();
+            console.log("add_chrome_banner");
             // Wait for the user to respond to the prompt
             deferredPrompt.userChoice.then((choiceResult) => {
                 if (choiceResult.outcome === 'accepted') {
