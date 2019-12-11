@@ -79,6 +79,7 @@
     window.addEventListener('beforeinstallprompt', function(e) {
         e.userChoice
             .then(function(choiceResult) {
+                messageBlock.textContent(choiceResult.outcome);
                 if (choiceResult.outcome === 'accepted') {
                     messageBlock.textContent = "add_chrome_banner";
                 } else {
