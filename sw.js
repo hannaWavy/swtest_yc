@@ -21,6 +21,8 @@ self.addEventListener('fetch', function(event) {
         if (response) {
           return response;
         }
+        console.log(event);
+        console.log(event.request);
         return fetch(event.request);
       }
     )
