@@ -2,9 +2,9 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('v1').then(function(cache) {
       return cache.addAll([
-        '/',
-        '/index.html',
-        '/images/example.png'
+        '/swtest_yc/',
+        '/swtest_yc/index.html',
+        '/swtest_yc/images/example.png'
       ]);
     })
   );
@@ -28,7 +28,7 @@ self.addEventListener('fetch', function(event) {
         });
         return response;
       }).catch(function () {
-        return caches.match('/images/example.png');
+        return caches.match('/swtest_yc/images/example.png');
       });
     }
   }));
@@ -64,19 +64,12 @@ self.addEventListener('fetch', function(event) {
 //     )
 //   );
 // });
-
 /*
     var deferredPrompt = false;
     var messageBlock = document.getElementById('messageBlock');
     var btnAdd = document.getElementById('btnAdd');
 
 
-    if('serviceWorker' in navigator) {
-        navigator.serviceWorker
-            .register('./sw.js')
-            // .then(function(registration) {});
-            .then(function(registration) { console.log('ServiceWorker registration successful with scope: ', registration.scope); });
-    }
 
     window.addEventListener('appinstalled', function() {
         messageBlock.textContent = "install_chrome_pwa";
