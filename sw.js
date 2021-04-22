@@ -1,14 +1,14 @@
-self.addEventListener('install', function(event) {
-  event.waitUntil(
-    caches.open('v1').then(function(cache) {
-      // return cache.addAll([
-      //   '/swtest_yc/',
-      //   '/swtest_yc/index.html',
-      //   '/swtest_yc/images/example.png'
-      // ]);
-    })
-  );
-});
+// self.addEventListener('install', function(event) {
+//   event.waitUntil(
+//     caches.open('v1').then(function(cache) {
+//       // return cache.addAll([
+//       //   '/swtest_yc/',
+//       //   '/swtest_yc/index.html',
+//       //   '/swtest_yc/images/example.png'
+//       // ]);
+//     })
+//   );
+// });
 
 self.addEventListener('fetch', function(event) {
   event.respondWith(caches.match(event.request).then(function(response) {
